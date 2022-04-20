@@ -28,10 +28,12 @@ function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
       console.log(`  > Loop #${i} with myTab1 = ${myTab1}`);
       myTab1 = myTmpTab.slice(i);
       console.log(`    > Once sliced, myTab1 = ${myTab1}`);
-      myTab2 = myTab1.map(item => item + myTmpTab[i - 1]);
-      console.log(`    > Once mapped, myTab2 = ${myTab2}`);
-      myTmpTest = (myTab2.find(element => (element == myTmpSum)) != undefined);
-      console.log("    > myTmpTest = " + myTmpTest + " for number " + myTmpTab[i - 1] + " and the remaining numbers of the array [" + myTab1 + "]. BTW, results of related sums are [" + myTab2 + "].");
+      // myTab2 = myTab1.map(item => item + myTmpTab[i - 1]);
+      // console.log(`    > Once mapped, myTab2 = ${myTab2}`);
+      // myTmpTest = (myTab2.find(element => (element == myTmpSum)) != undefined);
+      // console.log("    > myTmpTest = " + myTmpTest + " for number " + myTmpTab[i - 1] + " and the remaining numbers of the array [" + myTab1 + "]. BTW, results of related sums are [" + myTab2 + "].");
+      myTmpTest = (myTab1.find(element => (element + myTmpTab[i - 1] == myTmpSum)) != undefined);
+      console.log("    > myTmpTest = " + myTmpTest + " for number " + myTmpTab[i - 1] + " and the remaining numbers of the array [" + myTab1 + "].");
       myTest = myTest || myTmpTest;
       console.log(`    > And more generally myTest = ${myTest}`);
     }
