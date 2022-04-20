@@ -15,13 +15,23 @@ const fs = require('fs');
 const fileName = process.argv[2];
 let myBuildingCounter = 0;
 
-// Résout l'exercice n°4 en o(n) en utilisant 1 boucle et 1 "find"
+// Résout l'exercice n°6 en o(n) en utilisant 1 boucle et 1 "find"
 function allQuietOnTheWesternFront(myTab) {
-
   // On parcourt le tableau d'Ouest en Est (length-1 à 0)
   // On stocke : (i)  le plus grand immeuble trouvé qu'on compare au suivant vers la gauche à chaque fois
   //             (ii) le nombre d'immeuble offrant ainsi une vue
 
+  let highest = myTab[myTab.length - 1];
+  myBuildingCounter = 1;
+  for (let i = myTab.length - 1; i >= 1; i--) {
+    if (myTab[i] < myTab[i - 1]) {
+      if (myTab[i - 1] > highest) {
+        myBuildingCounter++;
+        highest = myTab[i - 1];
+      }
+    }
+  }
+  return true;
 }
 
 // Programme principal

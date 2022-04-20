@@ -15,14 +15,44 @@ const fs = require('fs');
 const fileName = process.argv[2];
 const mySum = process.argv[3];
 
-// Résout l'exercice n°3 en o(n) en utilisant 1 seule boucle assortie d'un mode de parcours alternatif
+// Return an array composed of the sum of myTmpItem with all element of myTmpTab1
+function sumFirstWithOtherElems(myTmpItem, myTmpTab1) {
+  console.log(`  > Entering 'sumFirstWithOtherElems' function with myTmpItem = '${myTmpItem}' and myTmpTab1 = [${myTmpTab1}].`);
+  if (myTmpTab1.length == 0) {
+    console.log("    > Empty array, let's return [].");
+    console.log("  > Exiting 'sumFirstWithOtherElems' function.");
+    return [];
+  } else {
+    let myTmpTab2 = myTmpTab1.slice();
+    console.log("    > Initially, myTmpTab2 = [" + myTmpTab2 + "].");
+    myTmpTab2.map(element => element + myTmpItem);
+    console.log(`    > myTmpTab2 stores the result of the 'mapped sum' of myTmpTab1 = [${myTmpTab2}].`);
+    console.log("  > Exiting 'sumFirstWithOtherElems' function.");
+    return myTmpTab2;
+  }
+}
+
+// Shortcut to fit a "map" function
+function doWhatIWant(myTmpTabX, myElementX) {
+  let myTmpElement = myTmpTabX[0];
+  myTmpTabX.shift();
+  console.log(`  > Launching 'sumFirstWithOtherElems' with ${myElementX} and myTmpTab = [${myTmpTabX}].`);
+  return sumFirstWithOtherElems(myTmpElement, myTmpTabX);
+}
+
+// Résout l'exercice n°5 en o(n) en utilisant 1 seule boucle assortie d'un mode de parcours alternatif
 function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
-
-  //myTmpTab.map(element => element + );
-  // Pour chaque element dtu tableau, on fabrique un tableau stockant sa somme avec chacun des éléments de la suite du tableau
-  // Ex: [10, 15, 3, 7] => [25, 13, 17], [18, 25], [10]
-  // Dans un second temps, on join + flattent ces 3 tableaux et on fait un "find" de myTmpSum => true ou false
-
+  // Pour chaque element du tableau, on fabrique un tableau stockant sa somme avec chacun des éléments de la suite du tableau
+  // Ex: [10, 15, 3, 7] => [[25, 13, 17], [18, 25], [10]]
+  // Dans un second temps, on 'flatten' tous ces tableaux et on fait un "findIndex" de myTmpSum => true ou false
+  let myTmpTest = false;
+  let myTmpTab3 = myTmpTab.slice();
+  console.log(`  > Initiammy, myTmpTab3 = [${myTmpTab3}].`);
+  myTmpTab3.map(element => doWhatIWant(myTmpTab, element));
+  console.log(`  > When exiting the 'map' function, we switch from myTmpTab = [${myTmpTab}] to myTmpTab3 = [${myTmpTab3}].`);
+  myTmpTab3.flat();
+  myTmpTest = (myTmpTab3.findIndex(myTmpSum) != -1);
+  return myTmpTest;
 }
 
 // Programme principal
@@ -39,6 +69,7 @@ try {
     console.log(`Raw data read from file '${fileName}' (${data}) and command line k=${mySum}`);
     myTab = data.split(' ').map(elem => parseInt(elem, 10));
     console.log(`Integered and arrayed resulting data: [${myTab}].`);
+    // if (DuoWhoseSumIsK(myTab, mySum)) {
     if (DuoWhoseSumIsK(myTab, mySum)) {
       console.log(`Glad to inform you we found a couple of numbers within [${myTab}] whose sum is effectively ${mySum} !`);
     } else {
