@@ -34,15 +34,13 @@ Here below are the related questions:
 
 1. Create an empty directory on your :computer:
 2. Clone the current :octocat: repository to the latter via `git clone .`
-3. To launch the merge sort script:
+3. To launch the merge sort script:  
+  - Launch the "mergesort.js" file thanks to a `node mergesort.js mergesort*.txt` command where "\*" is an Integer in (1,2,3).  
+  - If in a "change mood", replace the content of "mergesort\*.txt" with a random list of - positive and negative - numbers of your choice.  
 
-- Launch the "mergesort.js" file thanks to a `node mergesort.js mergesort*.txt` command where "\*" is an Integer in (1,2,3).
-- If in a "change mood", replace the content of "mergesort\*.txt" with a random list of - positive and negative - numbers of your choice.
-
-4. To run the different "algoexo\*.js" files:
-
-- Type `node algoexo*.js list*.txt` (where "\*" is the reference number of the given exercise), followed by \[Return\].
-- If you feel like giving one of these exercises another try, feel free to update the content of each "list\*.txt" file, simply paying attention to the rules of "Subject 1" and "Subject 2", respectively (e.g. for the latter, the array must contain positive Integers only).
+4. To run the different "algoexo\*.js" files:  
+  - Type `node algoexo*.js list*.txt` (where "\*" is the reference number of the given exercise), followed by \[Return\].  
+  - If you feel like giving one of these exercises another try, feel free to update the content of each "list\*.txt" file, simply paying attention to the rules of "Subject 1" and "Subject 2", respectively (e.g. for the latter, the array must contain positive Integers only).  
 
 ### :three: Missing features / Possible evolution :rocket:
 

@@ -16,17 +16,18 @@ const fileName = process.argv[2];
 let myBuildingCounter = 0;
 
 // Résoud l'exercice n°2 en o(n²) en utilisatn 2 boucles imbriquées
-function allQuietOnTheWesternFront (myTmpTab) {
+function allQuietOnTheWesternFront(myTmpTab) {
   let myTest = true;
   for (let i = 0; i < myTmpTab.length; i++) {
     let myTmpTestI = true;
-    for (let j = i+1; j < myTmpTab.length; j++) {
+    for (let j = i + 1; j < myTmpTab.length; j++) {
       mytmpTestJ = myTmpTab[i] > myTmpTab[j];
       myTmpTestI = myTmpTestI && mytmpTestJ;
-      myTest = myTest && mytmpTestJ;
+      myTest = myTest || mytmpTestJ;
     }
     if (myTmpTestI) {
-      console.log("  > We have THE (or one of the) best place to move to in the street " + myTmpTab + ": the building #" + i + " with " + myTmpTab + " stairs and a clear view to the West!");
+      myBuildingCounter++;
+      console.log("  > We have THE / one of the best place to move to in street [" + myTmpTab + "]: the building #" + i + " with its " + myTmpTab[i] + " stairs offering a clear view to the West!");
     }
   }
   return myTest;
@@ -40,13 +41,13 @@ function allQuietOnTheWesternFront (myTmpTab) {
 try {
   const data = fs.readFileSync(fileName, 'utf8');
   console.log("\n*** Exercise #1 ***");
-  console.log(`Raw data read from file '${fileName}': [${data}]`);
-  myTab = data.split(' ').map(elem => parseInt(elem,10));
+  console.log(`Raw data read from file '${fileName}': '${data}'`);
+  myTab = data.split(' ').map(elem => parseInt(elem, 10));
   console.log(`Integered and arrayed resulting data: [${myTab}].`);
   if (allQuietOnTheWesternFront(myTab)) {
-    console.log(`Glad to inform you we found ${myBuildingCounter} buildings within the street [${myTab}] which offers a clear view to the West!`);
+    console.log(`Glad to inform you we found ${myBuildingCounter} buildings within the street [${myTab}] which offer(s) a clear view to the West!\n`);
   } else {
-    console.log(`Am afraid... No building within the street [${myTab}] seems to offer a clear viw to the West: try investing in construction ;-) .`);
+    console.log(`Am afraid... No building within the street [${myTab}] seems to offer a clear viw to the West: try investing in construction ;-)\n`);
   }
 } catch (error) {
   console.error(error.message);
