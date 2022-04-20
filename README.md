@@ -2,7 +2,7 @@
 
 ### :one: Content :scroll:
 
-After (re)learning the different sorting algorithms (bubble, select, insert, quick), here is another one : the merge or fusion sort!
+After (re)learning the different sorting algorithms (bubble, select, insert, quick), here is another one : **the merge or fusion sort!**
 In addition to this additional sorting exercise, you'll find a few others based on 2 subjects:
 
 - **Subject #1:**  
