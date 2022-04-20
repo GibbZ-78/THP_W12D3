@@ -17,28 +17,12 @@ const mySum = process.argv[3];
 
 // Résout l'exercice n°3 en o(n) en utilisant 1 seule boucle assortie d'un mode de parcours alternatif
 function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
-  let myTab1 = [];
-  let myTab2 = [];
-  let myTest = false;
-  let myTmpTest = false;
-  if (myTmpTab.length < 2) {
-    console.log("  > Looks like the array your provided in the file contains less than the needed minimum of 2 elements...");
-  } else {
-    for (let i = 1; i < myTmpTab.length; i++) {
-      console.log(`  > Loop #${i} with myTab1 = ${myTab1}`);
-      myTab1 = myTmpTab.slice(i);
-      console.log(`    > Once sliced, myTab1 = ${myTab1}`);
-      // myTab2 = myTab1.map(item => item + myTmpTab[i - 1]);
-      // console.log(`    > Once mapped, myTab2 = ${myTab2}`);
-      // myTmpTest = (myTab2.find(element => (element == myTmpSum)) != undefined);
-      // console.log("    > myTmpTest = " + myTmpTest + " for number " + myTmpTab[i - 1] + " and the remaining numbers of the array [" + myTab1 + "]. BTW, results of related sums are [" + myTab2 + "].");
-      myTmpTest = (myTab1.find(element => (element + myTmpTab[i - 1] == myTmpSum)) != undefined);
-      console.log("    > myTmpTest = " + myTmpTest + " for number " + myTmpTab[i - 1] + " and the remaining numbers of the array [" + myTab1 + "].");
-      myTest = myTest || myTmpTest;
-      console.log(`    > And more generally myTest = ${myTest}`);
-    }
-  }
-  return myTest;
+
+  //myTmpTab.map(element => element + );
+  // Pour chaque element dtu tableau, on fabrique un tableau stockant sa somme avec chacun des éléments de la suite du tableau
+  // Ex: [10, 15, 3, 7] => [25, 13, 17], [18, 25], [10]
+  // Dans un second temps, on join + flattent ces 3 tableaux et on fait un "find" de myTmpSum => true ou false
+
 }
 
 // Programme principal
@@ -47,7 +31,7 @@ function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
 // Méthode de lecture SYNCHRONE du fichier passé en paramètre (i.e. bloquante mais, surtout, séquentielle)
 try {
   const data = fs.readFileSync(fileName, 'utf8');
-  console.log("\n*** Exercise 3/6 ***");
+  console.log("\n*** Exercise 5/6 ***");
   if (mySum == undefined) {
     console.log(`Raw data read from file '${fileName}' (${data}) are OK...`);
     console.log("... But no correct value was found for 'k' (possible sum value of 2 integers of the provided table).\n");
@@ -61,7 +45,7 @@ try {
       console.log(`Am afraid... No couple of numbers, taken from [${myTab}], seems to have ${mySum} as their sum. Try with another array or 'k' value.`);
     }
   }
-  console.log("*** Exercise 3/6 - THE END... ***");
+  console.log("*** Exercise 5/6 - THE END... ***");
 } catch (error) {
   console.error(error.message);
 }

@@ -17,26 +17,11 @@ let myBuildingCounter = 0;
 
 // Résout l'exercice n°4 en o(n) en utilisant 1 boucle et 1 "find"
 function allQuietOnTheWesternFront(myTab) {
-  let myTest = true;
-  let myTmpTest = true;
-  let myTmpTab = [];
-  console.log("  > Starting the 'allQuietOnTheWesternFront' function.");
-  for (let i = 0; i < myTab.length; i++) {
-    if (i == myTab.length - 1) {
-      myTmpTest = true; // Cas du dernier immeuble à l'Ouest qui a forcément une vue dégagée !
-      console.log("    > Last building on the Western side of the street hence offering a clear view in this direction ;-)");
-    } else {
-      myTmpTab = myTab.slice(i + 1);
-      myTmpTest = myTmpTab.find(height => (height >= myTab[i])) == undefined;
-      console.log(`    > Building #${i} of the street with ${myTab[i]} floors.`);
-    }
-    myTest = myTest || myTmpTest;
-    if (myTmpTest) {
-      myBuildingCounter++;
-      console.log(`      > We have THE / one of the best place to move to in street [${myTab}]: the ${myTab[i]}-storey building #${i}offering a clear view to the West!`);
-    }
-  }
-  return myTest;
+
+  // On parcourt le tableau d'Ouest en Est (length-1 à 0)
+  // On stocke : (i)  le plus grand immeuble trouvé qu'on compare au suivant vers la gauche à chaque fois
+  //             (ii) le nombre d'immeuble offrant ainsi une vue
+
 }
 
 // Programme principal
@@ -46,7 +31,7 @@ function allQuietOnTheWesternFront(myTab) {
 // suivie du programme principal contenant notamment l'appel de la fonction principale
 try {
   const data = fs.readFileSync(fileName, 'utf8');
-  console.log("\n*** Exercise 4/6 ***");
+  console.log("\n*** Exercise 6/6 ***");
   console.log(`Raw data read from file '${fileName}': '${data}'`);
   let myTab = data.split(' ').map(elem => parseInt(elem, 10));
   console.log(`Integered and arrayed resulting data: [${myTab}].`);
@@ -55,7 +40,7 @@ try {
   } else {
     console.log(`Am afraid... No building within the street [${myTab}] seems to offer a clear viw to the West: try investing in construction ;-)\n`);
   }
-  console.log("*** Exercise 4/6 - THE END... ***");
+  console.log("*** Exercise 6/6 - THE END... ***");
 } catch (error) {
   console.error(error.message);
 }

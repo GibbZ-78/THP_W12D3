@@ -49,6 +49,7 @@ try {
   } else {
     console.log(`Am afraid... No building within the street [${myTab}] seems to offer a clear viw to the West: try investing in construction ;-)\n`);
   }
+  console.log("*** Exercise 2/6 - THE END... ***");
 } catch (error) {
   console.error(error.message);
 }

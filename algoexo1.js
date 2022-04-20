@@ -50,11 +50,12 @@ try {
     myTab = data.split(' ').map(elem => parseInt(elem, 10));
     console.log(`Integered and arrayed resulting data: [${myTab}].`);
     if (DuoWhoseSumIsK(myTab, mySum)) {
-      console.log(`Glad to inform you we found a couple numbers within [${myTab}] whose sum is effectively ${mySum} !`);
+      console.log(`Glad to inform you we found a couple of numbers within [${myTab}] whose sum is effectively ${mySum} !`);
     } else {
       console.log(`Am afraid... No couple of numbers, taken from [${myTab}], seems to have ${mySum} as their sum. Try with another array or 'k' value.`);
     }
   }
+  console.log("*** Exercise 1/6 - THE END... ***");
 } catch (error) {
   console.error(error.message);
 }
