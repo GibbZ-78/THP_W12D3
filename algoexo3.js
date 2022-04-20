@@ -16,8 +16,27 @@ const fileName = process.argv[2];
 const mySum = process.argv[3];
 
 // Résout l'exercice n°3 en o(n) en utilisant 1 seule boucle assortie d'un mode de parcours alternatif
-function toBeRenamed() {
-
+function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
+  let myTab1 = [];
+  let myTab2 = [];
+  let myTest = false;
+  let myTmpTest = false;
+  if (myTmpTab.length < 2) {
+    console.log("  > Looks like the array your provided in the file contains less than the needed minimum of 2 elements...");
+  } else {
+    for (let i = 1; i < myTmpTab.length; i++) {
+      console.log(`  > Loop #${i} with myTab1 = ${myTab1}`);
+      myTab1 = myTmpTab.slice(i);
+      console.log(`    > Once sliced, myTab1 = ${myTab1}`);
+      myTab2 = myTab1.map(item => item + myTmpTab[i - 1]);
+      console.log(`    > Once mapped, myTab2 = ${myTab2}`);
+      myTmpTest = (myTab2.find(element => (element == myTmpSum)) != undefined);
+      console.log("    > myTmpTest = " + myTmpTest + " for number " + myTmpTab[i - 1] + " and the remaining numbers of the array [" + myTab1 + "]. BTW, results of related sums are [" + myTab2 + "].");
+      myTest = myTest || myTmpTest;
+      console.log(`    > And more generally myTest = ${myTest}`);
+    }
+  }
+  return myTest;
 }
 
 // Programme principal

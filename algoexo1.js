@@ -19,14 +19,18 @@ const mySum = process.argv[3];
 function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
   let mySumTest = false;
   let mySumTestTmp = false;
-  for (let i = 0; i < myTmpTab.length; i++) {
-    for (let j = i + 1; j < myTmpTab.length; j++) {
-      mySumTestTmp = myTmpTab[i] + myTmpTab[j] == myTmpSum;
-      mySumTest = mySumTest || mySumTestTmp;
-      if (mySumTestTmp) {
-        console.log("  > We have THE (or one of the) winning couple of numbers: " + myTmpTab[i] + " and " + myTmpTab[j] + " !");
+  if (myTmpTab.length >= 2) {
+    for (let i = 0; i < myTmpTab.length; i++) {
+      for (let j = i + 1; j < myTmpTab.length; j++) {
+        mySumTestTmp = myTmpTab[i] + myTmpTab[j] == myTmpSum;
+        mySumTest = mySumTest || mySumTestTmp;
+        if (mySumTestTmp) {
+          console.log("  > We have THE (or one of the) winning couple of numbers: " + myTmpTab[i] + " and " + myTmpTab[j] + " !");
+        }
       }
     }
+  } else {
+    console.log("  > Looks like the array your provided in the file contains less than the needed minimum of 2 elements...");
   }
   return mySumTest;
 }
