@@ -15,7 +15,7 @@ const fs = require('fs');
 const fileName = process.argv[2];
 let myBuildingCounter = 0;
 
-// Résoud l'exercice n°2 en o(n²) en utilisatn 2 boucles imbriquées
+// Résout l'exercice n°2 en o(n²) en utilisatn 2 boucles imbriquées
 function allQuietOnTheWesternFront(myTmpTab) {
   let myTest = true;
   for (let i = 0; i < myTmpTab.length; i++) {
@@ -40,7 +40,7 @@ function allQuietOnTheWesternFront(myTmpTab) {
 // suivie du programme principal contenant notamment l'appel de la fonction principale
 try {
   const data = fs.readFileSync(fileName, 'utf8');
-  console.log("\n*** Exercise #1 ***");
+  console.log("\n*** Exercise 2/6 ***");
   console.log(`Raw data read from file '${fileName}': '${data}'`);
   myTab = data.split(' ').map(elem => parseInt(elem, 10));
   console.log(`Integered and arrayed resulting data: [${myTab}].`);

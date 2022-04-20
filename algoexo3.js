@@ -15,20 +15,9 @@ const fs = require('fs');
 const fileName = process.argv[2];
 const mySum = process.argv[3];
 
-// Résout l'exercice n°1 en o(n²) en utilisatn 2 boucles imbriquées
-function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
-  let mySumTest = false;
-  let mySumTestTmp = false;
-  for (let i = 0; i < myTmpTab.length; i++) {
-    for (let j = i + 1; j < myTmpTab.length; j++) {
-      mySumTestTmp = myTmpTab[i] + myTmpTab[j] == myTmpSum;
-      mySumTest = mySumTest || mySumTestTmp;
-      if (mySumTestTmp) {
-        console.log("  > We have THE (or one of the) winning couple of numbers: " + myTmpTab[i] + " and " + myTmpTab[j] + " !");
-      }
-    }
-  }
-  return mySumTest;
+// Résout l'exercice n°3 en o(n) en utilisant 1 seule boucle assortie d'un mode de parcours alternatif
+function toBeRenamed() {
+
 }
 
 // Programme principal
@@ -37,7 +26,7 @@ function DuoWhoseSumIsK(myTmpTab, myTmpSum) {
 // Méthode de lecture SYNCHRONE du fichier passé en paramètre (i.e. bloquante mais, surtout, séquentielle)
 try {
   const data = fs.readFileSync(fileName, 'utf8');
-  console.log("\n*** Exercise 1/6 ***");
+  console.log("\n*** Exercise 3/6 ***");
   if (mySum == undefined) {
     console.log(`Raw data read from file '${fileName}' (${data}) are OK...`);
     console.log("... But no correct value was found for 'k' (possible sum value of 2 integers of the provided table).\n");
